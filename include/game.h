@@ -2,12 +2,14 @@
 # define GAME_H
 
 # include <SFML/Graphics.hpp>
+# include "defs.h"
+# include "resource_holder.hpp"
 
 class Game {
 private:
     sf::RenderWindow window;
     sf::Sprite player;
-    sf::Texture texture;
+    ResourceHolder<sf::Texture, Textures> textureHolder;
     sf::Clock clock;
     bool isMovingUp, isMovingDown, isMovingLeft, isMovingRight;
 

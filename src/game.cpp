@@ -1,10 +1,8 @@
 # include "game.h"
-# include "defs.h"
 
 Game::Game(): window(sf::VideoMode(640, 480), "SFML Application") {
-    if (!texture.loadFromFile("../assets/textures/Eagle.png")) {
-        // Handle loading error
-    }
+    textureHolder.load(Textures::Eagle, "../assets/textures/Eagle.png");
+    sf::Texture &texture = textureHolder.get(Textures::Eagle);
 
     player.setTexture(texture);
     player.setPosition(100.f, 100.f);
