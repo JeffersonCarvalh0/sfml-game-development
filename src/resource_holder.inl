@@ -3,7 +3,6 @@
 
 # include <utility>
 # include <stdexcept>
-# include <memory>
 
 template<typename Resource, typename Identifier>
 void ResourceHolder<Resource, Identifier>::load(Identifier id,
