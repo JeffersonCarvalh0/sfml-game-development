@@ -1,12 +1,6 @@
 # include "game.h"
 
-Game::Game(): window(sf::VideoMode(640, 480), "SFML Application") {
-    textureHolder.load(Textures::Eagle, "../assets/textures/Eagle.png");
-    sf::Texture &texture = textureHolder.get(Textures::Eagle);
-
-    player.setTexture(texture);
-    player.setPosition(100.f, 100.f);
-
+Game::Game(): window(sf::VideoMode(640, 480), "SFML Application"), world(window) {
     isMovingUp = isMovingDown = isMovingLeft = isMovingRight = false;
 }
 
@@ -46,18 +40,11 @@ void Game::handlePlayerInput(sf::Keyboard::Key key, bool isPressed) {
 }
 
 void Game::update(sf::Time deltaTime) {
-    sf::Vector2f movement(0.f, 0.f);
-
-    if (isMovingUp)     movement.y -= PlayerSpeed;
-    if (isMovingDown)   movement.y += PlayerSpeed;
-    if (isMovingLeft)   movement.x -= PlayerSpeed;
-    if (isMovingRight)  movement.x += PlayerSpeed;
-
-    player.move(movement * deltaTime.asSeconds());
+    world.update(deltaTime);
 }
 
 void Game::render() {
     window.clear();
-    window.draw(player);
+    world.draw();
     window.display();
 }

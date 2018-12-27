@@ -27,13 +27,12 @@ const std::string &filename, const Parameter &secondParam) {
 
 template<typename Resource, typename Identifier>
 Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) {
-    return resourceMap[id];
+    return resourceMap.find(id)->second;
 }
 
 template<typename Resource, typename Identifier>
 const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const {
-    return resourceMap[id];
+    return resourceMap.find(id)->second;
 }
-
 
 # endif /* end of include guard: RESOURCE_HOLDER_INL */

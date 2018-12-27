@@ -1,8 +1,10 @@
 # ifndef RESOURCE_HOLDER_HPP
 # define RESOURCE_HOLDER_HPP
 
+# include <SFML/Graphics.hpp>
 # include <map>
 # include <string>
+# include "defs.h"
 
 template<typename Resource, typename Identifier>
 class ResourceHolder {
@@ -18,6 +20,8 @@ public:
     Resource& get(Identifier id);
     const Resource& get(Identifier id) const;
 };
+
+using TextureHolder = ResourceHolder<sf::Texture, Textures>;
 
 # include "resource_holder.inl"
 
